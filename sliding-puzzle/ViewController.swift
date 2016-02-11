@@ -82,7 +82,7 @@ class GameSquareView : UIImageView {
         }
     }
     
-    override init(image: UIImage!) {
+    override init(image: UIImage?) {
         self.label = UILabel()
         super.init(image: image)
         self.empty = false
@@ -91,7 +91,7 @@ class GameSquareView : UIImageView {
         self.addSubview(self.label)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.label = UILabel()
         super.init(coder: aDecoder)
         self.empty = false
@@ -142,7 +142,7 @@ class GameViewController: UIViewController {
         gestureRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(gestureRecognizer)
         
-        var button = UIButton()
+        let button = UIButton()
         button.setTitle("Show Tile Numbers", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         button.titleLabel!.font = UIFont.systemFontOfSize(14.0)
@@ -164,7 +164,7 @@ class GameViewController: UIViewController {
         self.difficultySlider = UISlider()
         self.difficultySlider!.frame = CGRectMake(self.view.bounds.size.width / 2.0 - self.difficultySlider!.bounds.size.width / 2.0, topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 24, self.difficultySlider!.bounds.size.width, self.difficultySlider!.bounds.size.height)
         self.view.addSubview(self.difficultySlider!)
-        self.difficultySlider!.addTarget(self, action: "sliderChanged:", forControlEvents: UIControlEvents.TouchCancel | UIControlEvents.TouchUpInside | UIControlEvents.TouchUpOutside)
+        self.difficultySlider!.addTarget(self, action: "sliderChanged:", forControlEvents: [UIControlEvents.TouchCancel, UIControlEvents.TouchUpInside, UIControlEvents.TouchUpOutside])
         self.difficultySlider!.continuous = true
         
         self.easyLabel = UILabel()
@@ -211,7 +211,6 @@ class GameViewController: UIViewController {
             self.prizeLabel!.textAlignment = NSTextAlignment.Center
             self.prizeLabel!.textColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
             self.prizeLabel!.font = UIFont.systemFontOfSize(14.0)
-            let size = self.prizeLabel!.sizeThatFits(CGSizeMake(self.view.bounds.size.width, 1000))
             self.prizeLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
             self.prizeLabel!.numberOfLines = 2
             self.prizeLabel!.bounds = CGRectMake(0, 0, self.view.bounds.size.width - 14, 40)
@@ -227,7 +226,6 @@ class GameViewController: UIViewController {
             self.prizeLabel!.textAlignment = NSTextAlignment.Center
             self.prizeLabel!.textColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
             self.prizeLabel!.font = UIFont.systemFontOfSize(14.0)
-            let size = self.prizeLabel!.sizeThatFits(CGSizeMake(self.view.bounds.size.width, 1000))
             self.prizeLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
             self.prizeLabel!.numberOfLines = 2
             self.prizeLabel!.bounds = CGRectMake(0, 0, self.view.bounds.size.width - 14, 40)
@@ -235,8 +233,8 @@ class GameViewController: UIViewController {
             self.view.addSubview(self.prizeLabel!)
         }
         
-        for var x = 0; x < count(matrix); x++ {
-            for var y = 0; y < count(matrix[x]); y++ {
+        for var x = 0; x < matrix.count; x++ {
+            for var y = 0; y < matrix[x].count; y++ {
                 matrix[x][y].removeFromSuperview()
             }
         }
@@ -285,7 +283,7 @@ class GameViewController: UIViewController {
                 let w = image!.size.width / CGFloat(numberOfColumns)
                 let h = image!.size.height / CGFloat(numberOfRows)
                 let cgImage = CGImageCreateWithImageInRect(image!.CGImage, CGRectMake(CGFloat(j) * w, CGFloat(i) * h, w, h))
-                let image = UIImage(CGImage: cgImage)
+                let image = UIImage(CGImage: cgImage!)
                 let isEmpty = i == j && i == numberOfRows - 1
                 let gameSquareView = GameSquareView(image: isEmpty ? nil : image)
                 gameSquareView.frame = CGRectMake(CGFloat(j) * width + width / 2.0, CGFloat(i) * height + height / 2.0, 0, 0)
@@ -394,7 +392,7 @@ class GameViewController: UIViewController {
         
         emptySpotView.alpha = 0.0
         
-        UIView.animateWithDuration(0.2, delay: 0.12, options: UIViewAnimationOptions(0), animations: {
+        UIView.animateWithDuration(0.2, delay: 0.12, options: UIViewAnimationOptions(rawValue: 0), animations: {
             emptySpotView.alpha = 1.0
             }, completion: nil)
         
