@@ -23,44 +23,44 @@ class GameView : UIView {
     var controller : GameViewController?
     
     override func layoutSubviews() {
-        if UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft || UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight {
+        if UIDevice.current().orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current().orientation == UIDeviceOrientation.landscapeRight {
             
-            self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            self.frame = CGRect(x: 0, y: 0, width: UIScreen.main().bounds.size.width, height: UIScreen.main().bounds.size.height)
             let middleView = self.controller!.middleView!
-            middleView.frame = CGRectMake(0, 0, middleView.bounds.size.width, middleView.bounds.size.height)
+            middleView.frame = CGRect(x: 0, y: 0, width: middleView.bounds.size.width, height: middleView.bounds.size.height)
             let showingTileNumbersButton = self.controller!.showingTitleNumbersButton!
-            showingTileNumbersButton.frame = CGRectMake(landscapeControlsCenter - showingTileNumbersButton.bounds.size.width / 2.0, 100, showingTileNumbersButton.bounds.size.width, showingTileNumbersButton.bounds.size.height)
+            showingTileNumbersButton.frame = CGRect(x: landscapeControlsCenter - showingTileNumbersButton.bounds.size.width / 2.0, y: 100, width: showingTileNumbersButton.bounds.size.width, height: showingTileNumbersButton.bounds.size.height)
             let newGameButton = self.controller!.newGameButton!
-            newGameButton.frame = CGRectMake(landscapeControlsCenter - newGameButton.bounds.size.width / 2.0, 100 + 20, newGameButton.bounds.size.width, newGameButton.bounds.size.height)
+            newGameButton.frame = CGRect(x: landscapeControlsCenter - newGameButton.bounds.size.width / 2.0, y: 100 + 20, width: newGameButton.bounds.size.width, height: newGameButton.bounds.size.height)
             let difficultySlider = self.controller!.difficultySlider!
-            difficultySlider.frame = CGRectMake(landscapeControlsCenter - difficultySlider.bounds.size.width / 2.0, 100 + 40, difficultySlider.bounds.size.width, difficultySlider.bounds.size.height)
+            difficultySlider.frame = CGRect(x: landscapeControlsCenter - difficultySlider.bounds.size.width / 2.0, y: 100 + 40, width: difficultySlider.bounds.size.width, height: difficultySlider.bounds.size.height)
             let easyLabel = self.controller!.easyLabel!
-            easyLabel.frame = CGRectMake(landscapeControlsCenter - difficultySlider.bounds.size.width / 2.0 - easyLabel.bounds.size.width, 100 + 44, easyLabel.bounds.size.width, easyLabel.bounds.size.height)
+            easyLabel.frame = CGRect(x: landscapeControlsCenter - difficultySlider.bounds.size.width / 2.0 - easyLabel.bounds.size.width, y: 100 + 44, width: easyLabel.bounds.size.width, height: easyLabel.bounds.size.height)
             let hardLabel = self.controller!.hardLabel!
-            hardLabel.frame = CGRectMake(landscapeControlsCenter + difficultySlider.bounds.size.width / 2.0 + 4, 100 + 44, hardLabel.bounds.size.width, hardLabel.bounds.size.height)
+            hardLabel.frame = CGRect(x: landscapeControlsCenter + difficultySlider.bounds.size.width / 2.0 + 4, y: 100 + 44, width: hardLabel.bounds.size.width, height: hardLabel.bounds.size.height)
             
             let prizeLabel = self.controller!.prizeLabel!
-            prizeLabel.bounds = CGRectMake(0, 0, 200, 100)
+            prizeLabel.bounds = CGRect(x: 0, y: 0, width: 200, height: 100)
             prizeLabel.numberOfLines = 3
-            prizeLabel.frame = CGRectMake(landscapeControlsCenter - prizeLabel.bounds.size.width / 2.0, 100 + 72, 200, 100)
+            prizeLabel.frame = CGRect(x: landscapeControlsCenter - prizeLabel.bounds.size.width / 2.0, y: 100 + 72, width: 200, height: 100)
             
         } else {
-            self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-            self.controller!.middleView!.frame = CGRectMake(0, topMargin, self.controller!.middleView!.bounds.size.width, self.controller!.middleView!.bounds.size.height)
+            self.frame = CGRect(x: 0, y: 0, width: UIScreen.main().bounds.size.width, height: UIScreen.main().bounds.size.height)
+            self.controller!.middleView!.frame = CGRect(x: 0, y: topMargin, width: self.controller!.middleView!.bounds.size.width, height: self.controller!.middleView!.bounds.size.height)
             
             let showingTileNumbersButton = self.controller!.showingTitleNumbersButton!
-            showingTileNumbersButton.frame = CGRectMake(self.bounds.size.width / 2.0 - showingTileNumbersButton.titleLabel!.bounds.size.width / 2.0, topMargin + self.bounds.size.width + distanceToControls, showingTileNumbersButton.titleLabel!.bounds.size.width, showingTileNumbersButton.titleLabel!.bounds.size.height)
+            showingTileNumbersButton.frame = CGRect(x: self.bounds.size.width / 2.0 - showingTileNumbersButton.titleLabel!.bounds.size.width / 2.0, y: topMargin + self.bounds.size.width + distanceToControls, width: showingTileNumbersButton.titleLabel!.bounds.size.width, height: showingTileNumbersButton.titleLabel!.bounds.size.height)
             let newGameButton = self.controller!.newGameButton!
-            newGameButton.frame = CGRectMake(self.bounds.size.width / 2.0 - newGameButton.titleLabel!.bounds.size.width / 2.0, topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls, newGameButton.titleLabel!.bounds.size.width, newGameButton.titleLabel!.bounds.size.height)
+            newGameButton.frame = CGRect(x: self.bounds.size.width / 2.0 - newGameButton.titleLabel!.bounds.size.width / 2.0, y: topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls, width: newGameButton.titleLabel!.bounds.size.width, height: newGameButton.titleLabel!.bounds.size.height)
             let difficultySlider = self.controller!.difficultySlider!
-            difficultySlider.frame = CGRectMake(self.bounds.size.width / 2.0 - difficultySlider.bounds.size.width / 2.0, topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls + 24, difficultySlider.bounds.size.width, difficultySlider.bounds.size.height)
+            difficultySlider.frame = CGRect(x: self.bounds.size.width / 2.0 - difficultySlider.bounds.size.width / 2.0, y: topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls + 24, width: difficultySlider.bounds.size.width, height: difficultySlider.bounds.size.height)
             let easyLabel = self.controller!.easyLabel!
-            easyLabel.frame = CGRectMake(self.bounds.size.width / 2.0 - difficultySlider.bounds.size.width / 2.0 - easyLabel.bounds.size.width - 2, topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls + 28, easyLabel.bounds.size.width, easyLabel.bounds.size.height)
+            easyLabel.frame = CGRect(x: self.bounds.size.width / 2.0 - difficultySlider.bounds.size.width / 2.0 - easyLabel.bounds.size.width - 2, y: topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls + 28, width: easyLabel.bounds.size.width, height: easyLabel.bounds.size.height)
             let hardLabel = self.controller!.hardLabel!
-            hardLabel.frame = CGRectMake(self.bounds.size.width / 2.0 + difficultySlider.bounds.size.width / 2.0 + 8, topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls + 28, easyLabel.bounds.size.width, easyLabel.bounds.size.height)
+            hardLabel.frame = CGRect(x: self.bounds.size.width / 2.0 + difficultySlider.bounds.size.width / 2.0 + 8, y: topMargin + self.bounds.size.width + distanceToControls + distanceToGameControls + 28, width: easyLabel.bounds.size.width, height: easyLabel.bounds.size.height)
             let prizeLabel = self.controller!.prizeLabel!
-            prizeLabel.bounds = CGRectMake(0, 0, self.bounds.size.width - 14, 40)
-            prizeLabel.frame = CGRectMake(self.bounds.size.width / 2.0 - prizeLabel.bounds.size.width / 2.0, self.bounds.height - 66, prizeLabel.bounds.size.width - 14, 40)
+            prizeLabel.bounds = CGRect(x: 0, y: 0, width: self.bounds.size.width - 14, height: 40)
+            prizeLabel.frame = CGRect(x: self.bounds.size.width / 2.0 - prizeLabel.bounds.size.width / 2.0, y: self.bounds.height - 66, width: prizeLabel.bounds.size.width - 14, height: 40)
         }
     }
 }
@@ -77,7 +77,7 @@ class GameSquareView : UIImageView {
             if (newEmpty == true) {
                 self.layer.borderWidth = 0.0
             } else {
-                self.backgroundColor = UIColor.clearColor()
+                self.backgroundColor = UIColor.clear()
             }
         }
     }
@@ -86,7 +86,7 @@ class GameSquareView : UIImageView {
         self.label = UILabel()
         super.init(image: image)
         self.empty = false
-        self.layer.borderColor = UIColor.blackColor().CGColor
+        self.layer.borderColor = UIColor.black().cgColor
         self.layer.borderWidth = 1.0
         self.addSubview(self.label)
     }
@@ -97,11 +97,11 @@ class GameSquareView : UIImageView {
         self.empty = false
     }
     
-    func setValue(value:Int) {
+    func setValue(_ value:Int) {
         self.value = value
         self.label.text = "\(value)"
         self.label.sizeToFit()
-        self.label.frame = CGRectMake(self.bounds.size.width / 2.0 - self.label.bounds.size.width / 2.0, self.bounds.size.height / 2.0 - self.label.bounds.size.height / 2.0, self.label.bounds.size.width, self.label.bounds.size.height)
+        self.label.frame = CGRect(x: self.bounds.size.width / 2.0 - self.label.bounds.size.width / 2.0, y: self.bounds.size.height / 2.0 - self.label.bounds.size.height / 2.0, width: self.label.bounds.size.width, height: self.label.bounds.size.height)
     }
 }
 
@@ -127,66 +127,66 @@ class GameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
         let gameView = GameView()
         gameView.controller = self
         self.view = gameView
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white()
         
         startNewGame(self)
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTap:")
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.singleTap(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(gestureRecognizer)
         
         let button = UIButton()
-        button.setTitle("Show Tile Numbers", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-        button.titleLabel!.font = UIFont.systemFontOfSize(14.0)
+        button.setTitle("Show Tile Numbers", for: UIControlState())
+        button.setTitleColor(UIColor.blue(), for: UIControlState())
+        button.titleLabel!.font = UIFont.systemFont(ofSize: 14.0)
         button.titleLabel!.sizeToFit()
-        button.frame = CGRectMake(self.view.bounds.size.width / 2.0 - button.titleLabel!.bounds.size.width / 2.0, topMargin + self.view.bounds.size.width + distanceToControls, button.titleLabel!.bounds.size.width, button.titleLabel!.bounds.size.height)
-        button.addTarget(self, action: "toggleTitleNumbers:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame = CGRect(x: self.view.bounds.size.width / 2.0 - button.titleLabel!.bounds.size.width / 2.0, y: topMargin + self.view.bounds.size.width + distanceToControls, width: button.titleLabel!.bounds.size.width, height: button.titleLabel!.bounds.size.height)
+        button.addTarget(self, action: #selector(GameViewController.toggleTitleNumbers(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(button)
         self.showingTitleNumbersButton = button
         
         self.newGameButton = UIButton()
-        self.newGameButton!.setTitle("New Game", forState: UIControlState.Normal)
-        self.newGameButton!.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-        self.newGameButton!.titleLabel!.font = UIFont.systemFontOfSize(14.0)
+        self.newGameButton!.setTitle("New Game", for: UIControlState())
+        self.newGameButton!.setTitleColor(UIColor.blue(), for: UIControlState())
+        self.newGameButton!.titleLabel!.font = UIFont.systemFont(ofSize: 14.0)
         self.newGameButton!.sizeToFit()
-        self.newGameButton!.frame = CGRectMake(self.view.bounds.size.width / 2.0 - newGameButton!.titleLabel!.bounds.size.width / 2.0, topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls, newGameButton!.titleLabel!.bounds.size.width, newGameButton!.titleLabel!.bounds.size.height)
-        self.newGameButton!.addTarget(self, action: "startNewGame:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.newGameButton!.frame = CGRect(x: self.view.bounds.size.width / 2.0 - newGameButton!.titleLabel!.bounds.size.width / 2.0, y: topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls, width: newGameButton!.titleLabel!.bounds.size.width, height: newGameButton!.titleLabel!.bounds.size.height)
+        self.newGameButton!.addTarget(self, action: #selector(GameViewController.startNewGame(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(self.newGameButton!)
         
         self.difficultySlider = UISlider()
-        self.difficultySlider!.frame = CGRectMake(self.view.bounds.size.width / 2.0 - self.difficultySlider!.bounds.size.width / 2.0, topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 24, self.difficultySlider!.bounds.size.width, self.difficultySlider!.bounds.size.height)
+        self.difficultySlider!.frame = CGRect(x: self.view.bounds.size.width / 2.0 - self.difficultySlider!.bounds.size.width / 2.0, y: topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 24, width: self.difficultySlider!.bounds.size.width, height: self.difficultySlider!.bounds.size.height)
         self.view.addSubview(self.difficultySlider!)
-        self.difficultySlider!.addTarget(self, action: "sliderChanged:", forControlEvents: [UIControlEvents.TouchCancel, UIControlEvents.TouchUpInside, UIControlEvents.TouchUpOutside])
-        self.difficultySlider!.continuous = true
+        self.difficultySlider!.addTarget(self, action: #selector(GameViewController.sliderChanged(_:)), for: [UIControlEvents.touchCancel, UIControlEvents.touchUpInside, UIControlEvents.touchUpOutside])
+        self.difficultySlider!.isContinuous = true
         
         self.easyLabel = UILabel()
         self.easyLabel!.text = "Easy"
         self.easyLabel!.sizeToFit()
-        self.easyLabel!.font = UIFont.systemFontOfSize(14.0)
-        self.easyLabel!.frame = CGRectMake(self.view.bounds.size.width / 2.0 - self.difficultySlider!.bounds.size.width / 2.0 - self.easyLabel!.bounds.size.width - 2, topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 28, self.easyLabel!.bounds.size.width, self.easyLabel!.bounds.size.height)
+        self.easyLabel!.font = UIFont.systemFont(ofSize: 14.0)
+        self.easyLabel!.frame = CGRect(x: self.view.bounds.size.width / 2.0 - self.difficultySlider!.bounds.size.width / 2.0 - self.easyLabel!.bounds.size.width - 2, y: topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 28, width: self.easyLabel!.bounds.size.width, height: self.easyLabel!.bounds.size.height)
         self.view.addSubview(self.easyLabel!)
         
         self.hardLabel = UILabel()
         self.hardLabel!.text = "Hard"
         self.hardLabel!.sizeToFit()
-        self.hardLabel!.font = UIFont.systemFontOfSize(14.0)
-        self.hardLabel!.frame = CGRectMake(self.view.bounds.size.width / 2.0 + self.difficultySlider!.bounds.size.width / 2.0 + 8, topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 28, self.easyLabel!.bounds.size.width, self.easyLabel!.bounds.size.height)
+        self.hardLabel!.font = UIFont.systemFont(ofSize: 14.0)
+        self.hardLabel!.frame = CGRect(x: self.view.bounds.size.width / 2.0 + self.difficultySlider!.bounds.size.width / 2.0 + 8, y: topMargin + self.view.bounds.size.width + distanceToControls + distanceToGameControls + 28, width: self.easyLabel!.bounds.size.width, height: self.easyLabel!.bounds.size.height)
         self.view.addSubview(self.hardLabel!)
     }
     
-    func sliderChanged(sender:AnyObject!) {
+    func sliderChanged(_ sender:AnyObject!) {
         startNewGame(self)
     }
     
-    func startNewGame(sender:AnyObject!) {
+    func startNewGame(_ sender:AnyObject!) {
         
         let difficultyValue = self.difficultySlider == nil ? 0 : self.difficultySlider!.value
         var numberOfShuffles = 2
@@ -208,33 +208,33 @@ class GameViewController: UIViewController {
         if (self.prizeLabel == nil) {
             self.prizeLabel = UILabel()
             self.prizeLabel!.text = "You win a $50 iTunes gift card if you beat the game on the hardest difficulty"
-            self.prizeLabel!.textAlignment = NSTextAlignment.Center
+            self.prizeLabel!.textAlignment = NSTextAlignment.center
             self.prizeLabel!.textColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-            self.prizeLabel!.font = UIFont.systemFontOfSize(14.0)
-            self.prizeLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            self.prizeLabel!.font = UIFont.systemFont(ofSize: 14.0)
+            self.prizeLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
             self.prizeLabel!.numberOfLines = 2
-            self.prizeLabel!.bounds = CGRectMake(0, 0, self.view.bounds.size.width - 14, 40)
-            self.prizeLabel!.frame = CGRectMake(self.view.bounds.size.width / 2.0 - self.prizeLabel!.bounds.size.width / 2.0, self.view.bounds.height - 66, self.prizeLabel!.bounds.size.width - 14, 40)
+            self.prizeLabel!.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.width - 14, height: 40)
+            self.prizeLabel!.frame = CGRect(x: self.view.bounds.size.width / 2.0 - self.prizeLabel!.bounds.size.width / 2.0, y: self.view.bounds.height - 66, width: self.prizeLabel!.bounds.size.width - 14, height: 40)
             self.view.addSubview(self.prizeLabel!)
         }
-        if NSUserDefaults.standardUserDefaults().valueForKey("com.sliding-puzzle.1.hard-win") != nil {
+        if UserDefaults.standard.value(forKey: "com.sliding-puzzle.1.hard-win") != nil {
             if let prizeLabel = self.prizeLabel {
                 prizeLabel.removeFromSuperview()
             }
             self.prizeLabel = UILabel()
             self.prizeLabel!.text = "Your iTunes Gift code is: XQYGHRLV4Q2ZVRGK"
-            self.prizeLabel!.textAlignment = NSTextAlignment.Center
+            self.prizeLabel!.textAlignment = NSTextAlignment.center
             self.prizeLabel!.textColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-            self.prizeLabel!.font = UIFont.systemFontOfSize(14.0)
-            self.prizeLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            self.prizeLabel!.font = UIFont.systemFont(ofSize: 14.0)
+            self.prizeLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
             self.prizeLabel!.numberOfLines = 2
-            self.prizeLabel!.bounds = CGRectMake(0, 0, self.view.bounds.size.width - 14, 40)
-            self.prizeLabel!.frame = CGRectMake(self.view.bounds.size.width / 2.0 - self.prizeLabel!.bounds.size.width / 2.0, self.view.bounds.height - 66, self.prizeLabel!.bounds.size.width - 14, 40)
+            self.prizeLabel!.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.width - 14, height: 40)
+            self.prizeLabel!.frame = CGRect(x: self.view.bounds.size.width / 2.0 - self.prizeLabel!.bounds.size.width / 2.0, y: self.view.bounds.height - 66, width: self.prizeLabel!.bounds.size.width - 14, height: 40)
             self.view.addSubview(self.prizeLabel!)
         }
         
-        for var x = 0; x < matrix.count; x++ {
-            for var y = 0; y < matrix[x].count; y++ {
+        for x in 0 ..< matrix.count {
+            for y in 0 ..< matrix[x].count {
                 matrix[x][y].removeFromSuperview()
             }
         }
@@ -242,16 +242,16 @@ class GameViewController: UIViewController {
         matrix = Array<Array<GameSquareView>>()
         
         let random = arc4random() % 3 + 1
-        let path = NSBundle.mainBundle().pathForResource("image-\(random)", ofType: "png")
+        let path = Bundle.main.pathForResource("image-\(random)", ofType: "png")
         let image = UIImage(contentsOfFile: path!)
         let imageView = UIImageView(image: image)
-        let landscape = UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft || UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight
+        let landscape = UIDevice.current().orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current().orientation == UIDeviceOrientation.landscapeRight
         if landscape {
-            imageView.bounds = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.height)
-            imageView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.height)
+            imageView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.height, height: self.view.bounds.size.height)
+            imageView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.height, height: self.view.bounds.size.height)
         } else {
-            imageView.bounds = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)
-            imageView.frame = CGRectMake(0, 0 + topMargin, self.view.bounds.size.width, self.view.bounds.size.width)
+            imageView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.width)
+            imageView.frame = CGRect(x: 0, y: 0 + topMargin, width: self.view.bounds.size.width, height: self.view.bounds.size.width)
         }
         
         self.view.addSubview(imageView)
@@ -260,12 +260,12 @@ class GameViewController: UIViewController {
             middleView!.removeFromSuperview()
         }
         self.middleView = UIView()
-        self.middleView!.layer.borderColor = UIColor.blackColor().CGColor
+        self.middleView!.layer.borderColor = UIColor.black().cgColor
         self.middleView!.layer.borderWidth = 1.0
         if  landscape {
-            self.middleView!.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.height)
+            self.middleView!.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.height, height: self.view.bounds.size.height)
         } else {
-            self.middleView!.frame = CGRectMake(0, topMargin, self.view.bounds.size.width, self.view.bounds.size.width)
+            self.middleView!.frame = CGRect(x: 0, y: topMargin, width: self.view.bounds.size.width, height: self.view.bounds.size.width)
         }
         
         self.view.addSubview(middleView!)
@@ -274,21 +274,21 @@ class GameViewController: UIViewController {
         let width = side / CGFloat(numberOfColumns)
         let height = side / CGFloat(numberOfRows)
         
-        for var i = 0; i < numberOfRows; i++ {
+        for i in 0 ..< numberOfRows {
             
             var row = Array<GameSquareView>()
             
-            for var j = 0; j < numberOfColumns; j++ {
+            for j in 0 ..< numberOfColumns {
                 
                 let w = image!.size.width / CGFloat(numberOfColumns)
                 let h = image!.size.height / CGFloat(numberOfRows)
-                let cgImage = CGImageCreateWithImageInRect(image!.CGImage, CGRectMake(CGFloat(j) * w, CGFloat(i) * h, w, h))
-                let image = UIImage(CGImage: cgImage!)
+                let cgImage = image!.cgImage?.cropping(to: CGRect(x: CGFloat(j) * w, y: CGFloat(i) * h, width: w, height: h))
+                let image = UIImage(cgImage: cgImage!)
                 let isEmpty = i == j && i == numberOfRows - 1
                 let gameSquareView = GameSquareView(image: isEmpty ? nil : image)
-                gameSquareView.frame = CGRectMake(CGFloat(j) * width + width / 2.0, CGFloat(i) * height + height / 2.0, 0, 0)
-                UIView.animateWithDuration(0.2, animations: {
-                    gameSquareView.frame = CGRectMake(CGFloat(j) * width, CGFloat(i) * height, width, height)
+                gameSquareView.frame = CGRect(x: CGFloat(j) * width + width / 2.0, y: CGFloat(i) * height + height / 2.0, width: 0, height: 0)
+                UIView.animate(withDuration: 0.2, animations: {
+                    gameSquareView.frame = CGRect(x: CGFloat(j) * width, y: CGFloat(i) * height, width: width, height: height)
                 })
                 self.middleView!.addSubview(gameSquareView)
                 gameSquareView.alpha = 0
@@ -308,9 +308,9 @@ class GameViewController: UIViewController {
         
         imageView.removeFromSuperview()
         
-        for var i = 0; i < numberOfRows; i++ {
-            for var j = 0; j < numberOfColumns; j++ {
-                UIView.animateWithDuration(0.2, animations: {
+        for i in 0 ..< numberOfRows {
+            for j in 0 ..< numberOfColumns {
+                UIView.animate(withDuration: 0.2, animations: {
                     self.matrix[i][j].alpha = 1
                 })
             }
@@ -320,40 +320,40 @@ class GameViewController: UIViewController {
         
         while isFinished() == true {
             var position = randomAdjacentPosition(self.emptySpot.0, j: self.emptySpot.1)
-            for var i = 0; i < numberOfShuffles; i++ {
+            for _ in 0 ..< numberOfShuffles {
                 swapEmptyWithI(position.0, j:position.1)
                 position = randomAdjacentPosition(position.0, j: position.1)
             }
         }
     }
     
-    func toggleTitleNumbers(sender:AnyObject!) {
+    func toggleTitleNumbers(_ sender:AnyObject!) {
         
         var alpha = 1.0
         let button = self.showingTitleNumbersButton!
         
         if self.showingTitleNumbers {
-            button.setTitle("Show Title Numbers", forState: UIControlState.Normal)
+            button.setTitle("Show Title Numbers", for: UIControlState())
             button.titleLabel!.sizeToFit()
-            button.frame = CGRectMake(self.view.bounds.size.width / 2.0 - button.titleLabel!.bounds.size.width / 2.0, topMargin + self.view.bounds.size.width + distanceToControls, button.titleLabel!.bounds.size.width, button.titleLabel!.bounds.size.height)
+            button.frame = CGRect(x: self.view.bounds.size.width / 2.0 - button.titleLabel!.bounds.size.width / 2.0, y: topMargin + self.view.bounds.size.width + distanceToControls, width: button.titleLabel!.bounds.size.width, height: button.titleLabel!.bounds.size.height)
             self.showingTitleNumbers = false
             alpha = 0.0
         } else {
-            button.setTitle("Hide Title Numbers", forState: UIControlState.Normal)
+            button.setTitle("Hide Title Numbers", for: UIControlState())
             button.titleLabel!.sizeToFit()
-            button.frame = CGRectMake(self.view.bounds.size.width / 2.0 - button.titleLabel!.bounds.size.width / 2.0, topMargin + self.view.bounds.size.width + distanceToControls, button.titleLabel!.bounds.size.width, button.titleLabel!.bounds.size.height)
+            button.frame = CGRect(x: self.view.bounds.size.width / 2.0 - button.titleLabel!.bounds.size.width / 2.0, y: topMargin + self.view.bounds.size.width + distanceToControls, width: button.titleLabel!.bounds.size.width, height: button.titleLabel!.bounds.size.height)
             self.showingTitleNumbers = true
         }
         
-        for var i = 0; i < numberOfRows; i++ {
-            for var j = 0; j < numberOfColumns; j++ {
+        for i in 0 ..< numberOfRows {
+            for j in 0 ..< numberOfColumns {
                 matrix[i][j].label.alpha = CGFloat(alpha)
             }
         }
         self.view.setNeedsDisplay()
     }
     
-    func randomAdjacentPosition(i:Int, j:Int) -> (Int, Int) {
+    func randomAdjacentPosition(_ i:Int, j:Int) -> (Int, Int) {
         let horizontal = arc4random() % 2
         if horizontal == 1 {
             let left = arc4random() % 2
@@ -374,9 +374,9 @@ class GameViewController: UIViewController {
         }
     }
     
-    func swapEmptyWithI(i:Int, j:Int) {
+    func swapEmptyWithI(_ i:Int, j:Int) {
         
-        let landscape = UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft || UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight
+        let landscape = UIDevice.current().orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current().orientation == UIDeviceOrientation.landscapeRight
         let side = landscape ? self.view.bounds.size.height : self.view.bounds.size.width
         let width = side / CGFloat(numberOfColumns)
         let height = side / CGFloat(numberOfRows)
@@ -384,27 +384,27 @@ class GameViewController: UIViewController {
         let newJ = self.emptySpot.1
         let newI = self.emptySpot.0
         
-        UIView.animateWithDuration(0.2, animations: {
-            gameSquareView.frame = CGRectMake(CGFloat(newJ) * width, CGFloat(newI) * height, width, height)
+        UIView.animate(withDuration: 0.2, animations: {
+            gameSquareView.frame = CGRect(x: CGFloat(newJ) * width, y: CGFloat(newI) * height, width: width, height: height)
         })
         
         let emptySpotView = matrix[newI][newJ]
         
         emptySpotView.alpha = 0.0
         
-        UIView.animateWithDuration(0.2, delay: 0.12, options: UIViewAnimationOptions(rawValue: 0), animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.12, options: UIViewAnimationOptions(rawValue: 0), animations: {
             emptySpotView.alpha = 1.0
             }, completion: nil)
         
-        emptySpotView.frame = CGRectMake(CGFloat(j) * width, CGFloat(i) * height, width, height)
+        emptySpotView.frame = CGRect(x: CGFloat(j) * width, y: CGFloat(i) * height, width: width, height: height)
         matrix[newI][newJ] = gameSquareView
         matrix[i][j] = emptySpotView
         self.emptySpot = (i, j)
     }
     
     func isFinished() -> Bool {
-        for var i = 0; i < numberOfRows; i++ {
-            for var j = 0; j < numberOfColumns; j++ {
+        for i in 0 ..< numberOfRows {
+            for j in 0 ..< numberOfColumns {
                 if i == j && i == numberOfRows - 1 {
                     return true // empty square
                 }
@@ -417,10 +417,10 @@ class GameViewController: UIViewController {
         return true
     }
     
-    func singleTap(sender:AnyObject!) {
+    func singleTap(_ sender:AnyObject!) {
         let recognizer = sender as! UIGestureRecognizer
-        let location = recognizer.locationInView(self.view)
-        let landscape = UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft || UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight
+        let location = recognizer.location(in: self.view)
+        let landscape = UIDevice.current().orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current().orientation == UIDeviceOrientation.landscapeRight
         let side = landscape ? self.view.bounds.size.height : self.view.bounds.size.width
         let width = side / CGFloat(numberOfColumns)
         let height = side / CGFloat(numberOfRows)
@@ -437,19 +437,21 @@ class GameViewController: UIViewController {
                 if (isFinished()) {
                     let difficultyValue = self.difficultySlider == nil ? 0 : self.difficultySlider!.value
                     if difficultyValue == 1.0 {
-                        NSUserDefaults.standardUserDefaults().setValue("true", forKey: "com.sliding-puzzle.1.hard-win")
-                        let alert = UIAlertView(title: "Nice!", message: "Your iTunes Gift code is: XQYGHRLV4Q2ZVRGK", delegate: self, cancelButtonTitle: "OK")
-                        alert.show()
+                        UserDefaults.standard.setValue("true", forKey: "com.sliding-puzzle.1.hard-win")
+                        let alert = UIAlertController(title: "Nice!", message: "Your iTunes Gift code is: XQYGHRLV4Q2ZVRGK", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.startNewGame(self)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
                     } else {
-                        let alert = UIAlertView(title: "Nice", message: "You won :).  Now try Hard!", delegate: self, cancelButtonTitle: "OK")
-                        alert.show()
+                        let alert = UIAlertController(title: "Nice", message: "You won :).  Now try Hard!", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.startNewGame(self)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
                     }
                 }
         }
-    }
-    
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
-        startNewGame(self)
     }
 }
 
